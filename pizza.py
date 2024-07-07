@@ -15,7 +15,7 @@ client = AzureOpenAI(
 )
 
 #LLM Call function
-def call_llm(messages, model = 'gpt-4', oaia = client):
+def call_llm(messages, model = AZURE_OPENAI_MODEL, oaia = client):
     completion = oaia.chat.completions.create(
         messages=messages,
         model=model,   
@@ -67,6 +67,6 @@ async def  orderPizza(query):
     {"role": "user", "content": query}
     ]
 
-    response = call_llm(messages=message_text, model='gtp-4o-apim')
+    response = call_llm(messages=message_text)
     await asyncio.sleep(1)
     return response
